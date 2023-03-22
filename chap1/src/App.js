@@ -4,6 +4,9 @@ import './App.css';
 function App() {
 
   let posts = "강남 고기 맛집";
+  function 함수(){
+    return 100
+  }
 
   return (
     <div className="App">
@@ -11,6 +14,7 @@ function App() {
         <div>개발 Blog</div>
       </div>
       <ht4>{ posts }</ht4>
+      <ht4>{ 함수() }</ht4>
     </div>
   );
 }
