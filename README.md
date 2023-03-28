@@ -7,3 +7,6 @@
 # 실행
 npm start
 
+# Guide
+chap1 : 데이터바인딩
+chap2 : userState
