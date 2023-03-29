@@ -12,4 +12,6 @@ chap1 : 데이터바인딩
 chap2 : useState / component
 chap3 : component 연습 및 이벤트 처리 1
 chap4 : useState 연습
-chap5 : 
+chap5 : CREATE
+chap6 : UPDATE (CREATE + READ)
+chap7 : DELETE

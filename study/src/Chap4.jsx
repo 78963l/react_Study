@@ -21,7 +21,7 @@ function Nav(props){
         lis.push(<li key={t.id}>
             <a id={t.id} href={'/read/'+t.id} onClick={(e)=>{
                 e.preventDefault();
-                props.onChangeMod(e.target.id);
+                props.onChangeMod(Number(e.target.id));
             }}>
             {t.title}</a>
             </li>)
@@ -43,21 +43,41 @@ function Article(props){
     )
 }
 
-function Chap3(){
+function Chap4(){
+    const [id, setId] = useState(null);
+    const [mode, setMode] = useState("WELCOME");
     const topics = [
         {id:1, title:'html', body:'html is ...'},
         {id:2, title:'css', body:'css is ...'},
-        {id:3, title:'js', body:'js is ...'}
+        {id:3, title:'js', body:'javascript is ...'}
     ]
+    let content = null;
+    if (mode === "WELCOME"){
+        content = <Article title='Welcome' body='Hello, WEB'/>
+    }else if(mode === "READ"){
+        let title, body = null;
+        for(let i=0; i<topics.length; i++){
+            if(topics[i].id === id){
+                title = topics[i].title;
+                body = topics[i].body;
+            }
+        }
+        content = <Article title={title} body={body}/>
+    }
+
     return(
         <div>
-            <Header title="WEB" onChangeMod={()=>{alert('헤더클릭')}}/>
-            <Nav topic={topics} onChangeMod={(id)=>{alert(id)}}/>
+            <Header title="WEB" onChangeMod={()=>{
+                setMode('WELCOME');
+            }}/>
+            <Nav topic={topics} onChangeMod={(id)=>{
+                setMode('READ');
+                setId(id)
+            }}/>
             <hr></hr>
-            <Article title='Welcome' body='Welcome, WEB'/>
-            <Article title='Hi' body='Hello, WEB'/>
+            {content}
         </div>
     )
 }
 
-export default Chap3
+export default Chap4
